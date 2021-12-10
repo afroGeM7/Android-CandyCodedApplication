@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Candy Coded</string>
     <string name="products_title">Products</string>
+    <string name="_012_345_6789">(012)345-6789</string>
+    <string name="todo">TODO</string>
+    <string name="everyday_10am_10pm">Everyday 10am-10pm</string>
+    <string name="_618_e_south_st_orlando_fl">618 E South St Orlando, FL</string>
+    <string name="image">image</string>
+    <string name="image_hours">Image hours</string>
+    <string name="image_view">image view</string>
 </resources>

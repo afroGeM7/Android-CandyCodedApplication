@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -173,7 +174,8 @@ public class _2_StartTheGoogleMapsActivity {
         ArrayList<XMLTestHelpers.ViewContainer> viewContainers = new ArrayList<XMLTestHelpers.ViewContainer>();
 
         try {
-            inputStream = this.getClass().getClassLoader().getResourceAsStream(layoutFileName);
+            inputStream = Objects.requireNonNull(this.getClass().getClassLoader())
+                    .getResourceAsStream(layoutFileName);
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(false);
             XmlPullParser parser = factory.newPullParser();
@@ -184,6 +186,7 @@ public class _2_StartTheGoogleMapsActivity {
             e.printStackTrace();
         } finally {
             try {
+                assert inputStream != null;
                 inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
