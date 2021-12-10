@@ -1,5 +1,6 @@
 package com.pluralsight.candycoded;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,7 +12,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.pluralsight.candycoded.DB.CandyContract;
+//import com.pluralsight.candycoded.DB.CandyContract;
 import com.pluralsight.candycoded.DB.CandyContract.CandyEntry;
 import com.pluralsight.candycoded.DB.CandyDbHelper;
 import com.squareup.picasso.Picasso;
@@ -34,11 +35,11 @@ public class DetailActivity extends AppCompatActivity {
 
             CandyDbHelper dbHelper = new CandyDbHelper(this);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT * FROM candy", null);
+            @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM candy", null);
             cursor.moveToPosition(position);
 
             String candyName = cursor.getString(cursor.getColumnIndexOrThrow(
-                    CandyContract.CandyEntry.COLUMN_NAME_NAME));
+                    CandyEntry.COLUMN_NAME_NAME));
             String candyPrice = cursor.getString(cursor.getColumnIndexOrThrow(
                     CandyEntry.COLUMN_NAME_PRICE));
             mCandyImageUrl = cursor.getString(cursor.getColumnIndexOrThrow(
@@ -58,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
 
             ImageView imageView = (ImageView) this.findViewById(
                     R.id.image_view_candy);
-            Picasso.with(this).load(mCandyImageUrl).into(imageView);
+            Picasso.get().load(mCandyImageUrl).into(imageView); //changed from with () to get()
         }
     }
 
