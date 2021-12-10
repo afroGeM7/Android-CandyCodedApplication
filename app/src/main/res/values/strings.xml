@@ -13,4 +13,5 @@
     <string name="textview1">TextView</string>
     <string name="textview3">TextView</string>
     <string name="image4">image4</string>
+    <string name="store_info">Store Info</string>
 </resources>
