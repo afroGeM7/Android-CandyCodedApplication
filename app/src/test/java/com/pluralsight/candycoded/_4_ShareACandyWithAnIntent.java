@@ -2,7 +2,7 @@ package com.pluralsight.candycoded;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import org.junit.BeforeClass;
@@ -32,9 +32,7 @@ public class _4_ShareACandyWithAnIntent {
     public static final String HASHTAG_CANDYCODED = " #candycoded";
     public static final String mCandyImageUrl = "";
 
-    private static DetailActivity detailActivity;
     private static boolean onOptionsItemSelected_result = true;
-    private static boolean called_createShareIntent = false;
     private static boolean created_intent = false;
     private static boolean set_type = false;
     private static boolean called_put_extra = false;
@@ -42,9 +40,9 @@ public class _4_ShareACandyWithAnIntent {
 
     // Mockito setup
     @BeforeClass
-    public static void setup() throws Exception {
+    public static void setup() {
         // Spy on a MainActivity instance.
-        detailActivity = PowerMockito.spy(new DetailActivity());
+        DetailActivity detailActivity = PowerMockito.spy(new DetailActivity());
         // Create a fake Bundle to pass in.
         Bundle bundle = mock(Bundle.class);
 
@@ -85,7 +83,7 @@ public class _4_ShareACandyWithAnIntent {
     }
 
     @Test
-    public void onOptionsItemSelected_Exists() throws Exception {
+    public void onOptionsItemSelected_Exists() {
         Class<?> myClass = null;
 
         try {
@@ -101,33 +99,33 @@ public class _4_ShareACandyWithAnIntent {
     }
 
     @Test
-    public void onOptionsItemSelected_call_super() throws Exception {
+    public void onOptionsItemSelected_call_super() {
         onOptionsItemSelected_Exists();
         assertFalse("onOptionsItemSelected() does not return call to super.", onOptionsItemSelected_result);
     }
 
     @Test
-    public void share_intent_actionsend() throws Exception {
+    public void share_intent_actionsend() {
         assertTrue("The Intent was not created correctly.", created_intent);
     }
 
     @Test
-    public void share_intent_settype() throws Exception {
+    public void share_intent_settype() {
         assertTrue("The Intent's type needs to be set with setType().", set_type);
     }
 
     @Test
-    public void share_intent_putextra() throws Exception {
+    public void share_intent_putextra() {
         assertTrue("Send extra data with the Intent with putExtra().", called_put_extra);
     }
 
     @Test
-    public void share_intent_startactivity() throws Exception {
+    public void share_intent_startactivity() {
         assertTrue("The method startActivity() was not called.", called_startActivity_correctly);
     }
     
     @Test
-    public void createShareIntent_Exists() throws Exception {
+    public void createShareIntent_Exists() {
         Method myMethod = null;
 
         try {

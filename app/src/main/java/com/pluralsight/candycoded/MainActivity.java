@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,7 +27,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
     private Candy[] candies;
-    private CandyDbHelper candyDbHelper = new CandyDbHelper(this);
+    private final CandyDbHelper candyDbHelper = new CandyDbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SQLiteDatabase db = candyDbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM candy", null);
+        Cursor cursor = db.rawQuery(getString(R.string.selectcandy), null);
 
         final CandyCursorAdapter adapter = new CandyCursorAdapter(this, cursor);
-        ListView listView = (ListView)this.findViewById(R.id.list_view_candy);
+        ListView listView = this.findViewById(R.id.list_view_candy);
 
         listView.setAdapter(adapter);
 

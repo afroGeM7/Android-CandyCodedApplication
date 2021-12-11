@@ -5,6 +5,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by sarah on 9/28/17.
@@ -32,22 +33,19 @@ public class XMLTestHelpers {
                 return false;
             }
             final ViewContainer other = (ViewContainer) obj;
-            if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
+            if (!Objects.equals(this.id, other.id)) {
                 return false;
             }
-            if ((this.onClick == null) ? (other.onClick != null) : !this.onClick.equals(other.onClick)) {
+            if (!Objects.equals(this.onClick, other.onClick)) {
                 return false;
             }
-            if ((this.clickable == null) ? (other.clickable != null) : !this.clickable.equals(other.clickable)) {
-                return false;
-            }
-            return true;
+            return Objects.equals(this.clickable, other.clickable);
         }
     }
 
     public static ArrayList<ViewContainer> readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
 
-        ArrayList<ViewContainer> viewContainers = new ArrayList<ViewContainer>();
+        ArrayList<ViewContainer> viewContainers = new ArrayList<>();
 
         parser.require(XmlPullParser.START_TAG, null, "android.support.constraint.ConstraintLayout");
         while (parser.next() != XmlPullParser.END_TAG) {

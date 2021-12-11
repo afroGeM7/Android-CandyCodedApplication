@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import junit.framework.Assert;
@@ -40,14 +40,13 @@ public class _2_StartTheGoogleMapsActivity {
     public static final String LAYOUT_XML_FILE = "res/layout/activity_info.xml";
     private static boolean called_uri_parse = false;
     private static boolean created_intent = false;
-    private static boolean created_intent_correctly = false;
     private static boolean set_package = false;
     private static boolean resolve_activity = false;
     private static boolean called_startActivity_correctly = false;
 
     // Mockito setup
     @BeforeClass
-    public static void setup() throws Exception {
+    public static void setup() {
         // Spy on a MainActivity instance.
         InfoActivity infoActivity = PowerMockito.spy(new InfoActivity());
         // Create a fake Bundle to pass in.
@@ -113,37 +112,37 @@ public class _2_StartTheGoogleMapsActivity {
     }
 
     @Test
-    public void make_uri_address() throws Exception {
+    public void make_uri_address() {
         createMapIntent_Exists();
         assertTrue("The Uri for the map location wasn't created.", called_uri_parse);
     }
 
     @Test
-    public void create_actionview_map_intent() throws Exception {
+    public void create_actionview_map_intent() {
         createMapIntent_Exists();
         assertTrue("The Intent was not created correctly.", created_intent);
     }
 
     @Test
-    public void map_intent_set_package() throws Exception {
+    public void map_intent_set_package() {
         createMapIntent_Exists();
         assertTrue("The package was not set for the Intent.", set_package);
     }
 
     @Test
-    public void map_intent_handler_exists() throws Exception {
+    public void map_intent_handler_exists() {
         createMapIntent_Exists();
         assertTrue("The method resolveActivity() needs to be called.", resolve_activity);
     }
 
     @Test
-    public void map_intent_start_activity() throws Exception {
+    public void map_intent_start_activity() {
         createMapIntent_Exists();
         assertTrue("The method startActivity() was not called.", called_startActivity_correctly);
     }
 
     @Test
-    public void createMapIntent_Exists() throws Exception {
+    public void createMapIntent_Exists() {
         Method myMethod = null;
 
         try {
@@ -157,7 +156,7 @@ public class _2_StartTheGoogleMapsActivity {
     }
 
     @Test
-    public void test_xml() throws Exception {
+    public void test_xml() {
         ArrayList<XMLTestHelpers.ViewContainer> viewContainers = readLayoutXML(LAYOUT_XML_FILE);
         XMLTestHelpers.ViewContainer addressView =
                 new XMLTestHelpers.ViewContainer("@+id/text_view_address", "createMapIntent", "true");
@@ -171,7 +170,7 @@ public class _2_StartTheGoogleMapsActivity {
     public ArrayList<XMLTestHelpers.ViewContainer> readLayoutXML(String layoutFileName) {
         InputStream inputStream = null;
 
-        ArrayList<XMLTestHelpers.ViewContainer> viewContainers = new ArrayList<XMLTestHelpers.ViewContainer>();
+        ArrayList<XMLTestHelpers.ViewContainer> viewContainers = new ArrayList<>();
 
         try {
             inputStream = Objects.requireNonNull(this.getClass().getClassLoader())
