@@ -1,5 +1,6 @@
 package com.pluralsight.candycoded;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -128,3 +129,5 @@ public class _1_StartTheStoreInformationActivity {
                 myClass, MainActivity.class);
     }
 }
+
+

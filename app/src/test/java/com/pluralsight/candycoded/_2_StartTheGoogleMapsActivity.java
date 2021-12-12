@@ -1,5 +1,7 @@
 package com.pluralsight.candycoded;
 
+
+
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,8 +13,10 @@ import android.view.View;
 import junit.framework.Assert;
 
 import org.junit.BeforeClass;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
